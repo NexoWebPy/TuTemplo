@@ -1,0 +1,2109 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Conocé la historia, filosofía y esencia de Tu Templo Barber Club. Más que una barbería, una experiencia.">
+<title>Conócenos | Tu Templo Barber Club</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --gold: #c6a15b;
+  --gold-light: #ead29a;
+  --black: #080808;
+  --white: #f4f0e8;
+  --muted: #85817a;
+  --line: rgba(198,161,91,.22);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 92px;
+  background: var(--black);
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--gold);
+  color: #080808;
+}
+
+/* SCROLL PROGRESS */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 3px;
+  background: rgba(198,161,91,.15);
+}
+
+.scroll-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg,var(--gold),var(--gold-light));
+  box-shadow: 0 0 15px rgba(198,161,91,.5);
+}
+
+/* NAVIGATION */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  min-height: 92px;
+  padding: 18px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.nav.is-scrolled {
+  border-color: rgba(198,161,91,.18);
+  background: rgba(8,8,8,.9);
+  box-shadow: 0 12px 35px rgba(0,0,0,.24);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.nav-logo img {
+  width: 53px;
+  height: 53px;
+  object-fit: cover;
+  border: 1px solid rgba(198,161,91,.6);
+  border-radius: 50%;
+  box-shadow: 0 0 24px rgba(198,161,91,.12);
+}
+
+.nav-logo div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-logo strong {
+  font-size: 16px;
+  letter-spacing: 3px;
+  font-weight: 900;
+}
+
+.nav-logo small {
+  color: var(--gold);
+  font-size: 8px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-links a {
+  color: #d0ccc4;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-links a:not(.nav-cta)::after {
+  display: block;
+  height: 1px;
+  margin-top: 5px;
+  background: var(--gold);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+}
+
+.nav-links a:not(.nav-cta):hover::after,
+.nav-links a:not(.nav-cta).is-active::after {
+  transform: scaleX(1);
+}
+
+.nav-cta {
+  padding: 14px 21px;
+  border: 1px solid rgba(198,161,91,.55);
+  color: var(--gold-light) !important;
+  transition: background .3s ease, color .3s ease, border-color .3s ease;
+}
+
+.nav-cta:hover {
+  background: var(--gold);
+  color: #080808 !important;
+}
+
+.nav-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  padding: 12px;
+  border: 1px solid rgba(198,161,91,.4);
+  background: rgba(8,8,8,.65);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 5px 0;
+  background: currentColor;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:first-child {
+  transform: translateY(3px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:last-child {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 150px 8% 100px;
+  overflow: hidden;
+  scroll-margin-top: 90px;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.69) 48%,rgba(0,0,0,.32) 100%),
+    linear-gradient(0deg,#080808 0%,transparent 35%),
+    url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=2200&q=90') center/cover no-repeat;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 75% 40%,rgba(198,161,91,.16),transparent 40%),
+    linear-gradient(90deg,rgba(8,8,8,.22),transparent 68%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  animation: hero-arrive .9s cubic-bezier(.2,.7,.3,1) both;
+}
+
+@keyframes hero-arrive {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 5px;
+  margin-bottom: 30px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 42px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero h1 {
+  max-width: 1000px;
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: clamp(75px,12vw,165px);
+  font-weight: 900;
+  line-height: .78;
+  letter-spacing: -4px;
+  text-transform: uppercase;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--gold);
+  margin-top: 15px;
+}
+
+.hero-description {
+  max-width: 540px;
+  margin-top: 38px;
+  color: #c4c0b8;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 42px;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+  padding: 18px 24px;
+  background: var(--gold);
+  color: #080808;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  transition: .35s;
+}
+
+.primary-button:hover {
+  background: var(--gold-light);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(198,161,91,.2);
+}
+
+.text-button {
+  color: #ddd;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 8px;
+}
+
+.hero-bottom {
+  position: absolute;
+  bottom: 45px;
+  left: 8%;
+  right: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #8b857b;
+  font-family: 'JetBrains Mono',monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.scroll-indicator {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.scroll-indicator span {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  transform-origin: left;
+  animation: scroll-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-pulse {
+  0%, 100% { transform: scaleX(.55); opacity: .6; }
+  50% { transform: scaleX(1); opacity: 1; }
+}
+
+/* GENERAL */
+
+.section {
+  position: relative;
+  padding: 125px 8%;
+  overflow: hidden;
+  scroll-margin-top: 90px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 25px;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.section-label::before {
+  content: "";
+  width: 35px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-title {
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: clamp(55px,8vw,105px);
+  line-height: .88;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+}
+
+.section-title span {
+  color: var(--gold);
+}
+
+.section-description {
+  color: #99948b;
+  font-size: 14px;
+  line-height: 2;
+}
+
+/* INTRODUCTION */
+
+.intro-section {
+  background:
+    radial-gradient(circle at 10% 40%,rgba(198,161,91,.08),transparent 35%),
+    #080808;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.intro-copy h2 {
+  margin-bottom: 35px;
+}
+
+.intro-copy p {
+  margin-top: 20px;
+  color: #aaa59c;
+  font-size: 14px;
+  line-height: 2.1;
+}
+
+.intro-copy p strong {
+  color: var(--gold-light);
+}
+
+.intro-image {
+  position: relative;
+  min-height: 580px;
+}
+
+.intro-image img {
+  width: 100%;
+  height: 580px;
+  object-fit: cover;
+  filter: grayscale(35%);
+}
+
+.intro-image::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 15px -15px -15px 15px;
+  border: 1px solid rgba(198,161,91,.5);
+  pointer-events: none;
+}
+
+.image-caption {
+  position: absolute;
+  z-index: 3;
+  bottom: 25px;
+  left: -35px;
+  padding: 20px 25px;
+  background: var(--gold);
+  color: #080808;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+/* HISTORY */
+
+.history-section {
+  background: #0d0d0d;
+}
+
+.history-heading {
+  max-width: 850px;
+  margin-bottom: 90px;
+}
+
+.history-heading p {
+  max-width: 600px;
+  margin-top: 28px;
+}
+
+.history-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 70px 100px;
+}
+
+.history-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(transparent,var(--gold),transparent);
+}
+
+.history-item {
+  position: relative;
+  padding: 35px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.008));
+  transition: transform .4s ease, border-color .4s ease, background .4s ease;
+}
+
+.history-item::after {
+  position: absolute;
+  top: 48px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--gold-light);
+  border-radius: 50%;
+  background: #0d0d0d;
+  box-shadow: 0 0 18px rgba(198,161,91,.45);
+  content: "";
+}
+
+.history-item:nth-child(odd)::after {
+  right: -56px;
+}
+
+.history-item:nth-child(even)::after {
+  left: -56px;
+}
+
+.history-item:hover {
+  transform: translateY(-8px);
+  border-color: rgba(198,161,91,.45);
+  background: linear-gradient(145deg,rgba(198,161,91,.09),rgba(255,255,255,.012));
+}
+
+.history-number {
+  color: rgba(198,161,91,.4);
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: 65px;
+  font-weight: 900;
+  line-height: .9;
+  transition: color .3s ease;
+}
+
+.history-item:hover .history-number {
+  color: var(--gold);
+}
+
+.history-item h3 {
+  margin: 10px 0 20px;
+  color: var(--gold-light);
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: 35px;
+  text-transform: uppercase;
+}
+
+.history-item p {
+  color: #99948b;
+  font-size: 13px;
+  line-height: 2;
+}
+
+/* FULL IMAGE */
+
+.visual-section {
+  position: relative;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 8%;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.8)),
+    url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=2200&q=90') center/cover fixed;
+}
+
+.visual-content {
+  max-width: 900px;
+}
+
+.visual-content small {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 5px;
+}
+
+.visual-content h2 {
+  margin: 30px 0;
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: clamp(60px,10vw,130px);
+  line-height: .85;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.visual-content h2 span {
+  color: var(--gold);
+}
+
+.visual-content p {
+  max-width: 650px;
+  margin: auto;
+  color: #c2bdb4;
+  font-size: 14px;
+  line-height: 2;
+}
+
+/* PHILOSOPHY */
+
+.philosophy-section {
+  background: #080808;
+}
+
+.philosophy-header {
+  max-width: 750px;
+  margin-bottom: 70px;
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.philosophy-card {
+  position: relative;
+  min-height: 330px;
+  padding: 40px 32px;
+  border: 1px solid rgba(255,255,255,.09);
+  background: linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.008));
+  transition: .4s;
+  overflow: hidden;
+}
+
+.philosophy-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--gold);
+  background: linear-gradient(145deg,rgba(198,161,91,.1),rgba(255,255,255,.015));
+}
+
+.philosophy-icon {
+  color: var(--gold);
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: 45px;
+  font-weight: 800;
+}
+
+.philosophy-card h3 {
+  margin: 30px 0 18px;
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: 32px;
+  text-transform: uppercase;
+}
+
+.philosophy-card p {
+  color: #99948b;
+  font-size: 12px;
+  line-height: 2;
+}
+
+/* EXPERIENCE */
+
+.experience-section {
+  background:
+    radial-gradient(circle at 85% 50%,rgba(198,161,91,.08),transparent 30%),
+    #101010;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  align-items: center;
+  gap: 100px;
+}
+
+.experience-image {
+  position: relative;
+}
+
+.experience-image img {
+  width: 100%;
+  height: 650px;
+  object-fit: cover;
+  filter: grayscale(25%);
+}
+
+.experience-image::after {
+  content: "TU TEMPLO";
+  position: absolute;
+  right: -35px;
+  bottom: 35px;
+  padding: 18px 28px;
+  background: var(--gold);
+  color: #080808;
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.experience-copy h2 {
+  margin-bottom: 35px;
+}
+
+.experience-copy p {
+  margin-bottom: 22px;
+  color: #99948b;
+  font-size: 13px;
+  line-height: 2.1;
+}
+
+.experience-copy p strong {
+  color: var(--gold-light);
+}
+
+/* QUOTE */
+
+.quote-section {
+  padding: 110px 8%;
+  background: var(--gold);
+  color: #080808;
+  text-align: center;
+}
+
+.quote-mark {
+  font-family: Georgia,serif;
+  font-size: 100px;
+  line-height: .7;
+}
+
+.quote-section blockquote {
+  max-width: 1000px;
+  margin: 25px auto;
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: clamp(38px,6vw,75px);
+  font-weight: 800;
+  line-height: .98;
+  text-transform: uppercase;
+}
+
+.quote-section p {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+/* FINAL CTA */
+
+.final-cta {
+  position: relative;
+  padding: 130px 8%;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0,0,0,.87),rgba(0,0,0,.92)),
+    url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=2000&q=85') center/cover;
+}
+
+.final-cta h2 {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: clamp(65px,10vw,125px);
+  line-height: .85;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.final-cta h2 span {
+  color: var(--gold);
+}
+
+.final-cta p {
+  max-width: 550px;
+  margin: 30px auto;
+  color: #aaa59c;
+  font-size: 13px;
+  line-height: 2;
+}
+
+/* FOOTER */
+
+.tt-footer {
+  --tt-gold: #c6a15b;
+  --tt-gold-light: #ead29a;
+  --tt-black: #080808;
+  --tt-white: #f4f0e8;
+  --tt-muted: #85817a;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 8% 20%,rgba(198,161,91,.10),transparent 35%),
+    radial-gradient(ellipse at 90% 85%,rgba(198,161,91,.055),transparent 35%),
+    var(--tt-black);
+  color: var(--tt-white);
+  border-top: 1px solid rgba(198,161,91,.35);
+}
+
+.tt-footer-line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,var(--gold),var(--gold-light),var(--gold),transparent);
+  box-shadow: 0 0 18px rgba(198,161,91,.3);
+}
+
+.tt-footer-container {
+  width: calc(100% - 100px);
+  max-width: 1550px;
+  margin: auto;
+}
+
+.tt-footer-main {
+  display: grid;
+  grid-template-columns: 1.7fr .8fr .9fr 1fr;
+  gap: 55px;
+  padding: 85px 0;
+}
+
+.tt-brand-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tt-brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin-bottom: 45px;
+}
+
+.tt-brand-emblem {
+  width: 90px;
+  height: 90px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(198,161,91,.45);
+  border-radius: 50%;
+  color: var(--gold-light);
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.tt-brand-name {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tt-brand-name strong {
+  color: white;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.tt-brand-name small {
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.tt-small-label,
+.tt-column-label {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.tt-brand-description h3 {
+  margin: 18px 0;
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: 42px;
+  line-height: .95;
+  text-transform: uppercase;
+}
+
+.tt-brand-description h3 span {
+  display: block;
+  color: var(--gold);
+}
+
+.tt-brand-description p {
+  max-width: 300px;
+  color: #99948b;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.tt-footer-reserve {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  min-width: 225px;
+  margin-top: 27px;
+  padding: 16px;
+  border: 1px solid rgba(198,161,91,.55);
+  color: var(--gold-light);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  transition: .3s;
+}
+
+.tt-footer-reserve:hover {
+  background: var(--gold);
+  color: #080808;
+}
+
+.tt-footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding-top: 12px;
+}
+
+.tt-column-label {
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--gold);
+}
+
+.tt-footer-column > a {
+  color: #99948b;
+  font-size: 12px;
+  transition: .3s;
+}
+
+.tt-footer-column > a:hover {
+  color: var(--gold);
+  transform: translateX(5px);
+}
+
+.tt-contact-item {
+  display: flex;
+  gap: 13px;
+  margin-bottom: 20px;
+}
+
+.tt-contact-icon {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(198,161,91,.3);
+  color: var(--gold);
+}
+
+.tt-contact-item strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.tt-contact-item p,
+.tt-contact-item a {
+  color: #99948b;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.tt-footer-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  padding: 30px 0;
+  border-top: 1px solid rgba(255,255,255,.09);
+  border-bottom: 1px solid rgba(255,255,255,.09);
+}
+
+.tt-footer-social-title span {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.tt-footer-social-title p {
+  margin-top: 8px;
+  color: #8e8981;
+  font-size: 11px;
+}
+
+.tt-social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.tt-social-links a {
+  min-width: 85px;
+  padding: 13px 16px;
+  border: 1px solid rgba(255,255,255,.13);
+  color: #ddd;
+  font-size: 10px;
+  font-weight: 800;
+  text-align: center;
+  transition: .3s;
+}
+
+.tt-social-links a:hover {
+  background: var(--gold);
+  color: #080808;
+}
+
+.tt-footer-signature {
+  padding: 45px 0 35px;
+  overflow: hidden;
+}
+
+.tt-signature-top,
+.tt-signature-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: #777066;
+  font-family: 'JetBrains Mono',monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.tt-signature-word {
+  width: max-content;
+  max-width: 100%;
+  margin: 20px auto;
+  color: #eee9df;
+  font-family: 'Barlow Condensed',sans-serif;
+  font-size: clamp(100px,19.5vw,290px);
+  font-weight: 900;
+  line-height: .8;
+  letter-spacing: -.09em;
+  white-space: nowrap;
+  background: linear-gradient(180deg,#f0e9d9 5%,#c4bba9 50%,#70685b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tt-signature-bottom {
+  color: var(--gold);
+}
+
+.tt-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 25px 0;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.tt-copyright,
+.tt-developed,
+.tt-bottom-links a {
+  color: #77716a;
+  font-family: 'JetBrains Mono',monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.tt-bottom-links {
+  display: flex;
+  gap: 20px;
+}
+
+.tt-bottom-links a:hover {
+  color: var(--gold);
+}
+
+.tt-developed span {
+  color: var(--gold);
+  font-weight: 900;
+}
+
+/* SCROLL ANIMATIONS */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity .9s ease,transform .9s cubic-bezier(.2,.7,.3,1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-55px);
+  transition: opacity .9s ease,transform .9s ease;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(55px);
+  transition: opacity .9s ease,transform .9s ease;
+}
+
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible {
+  opacity: 1;
+  transform: translate(0,0);
+}
+
+.delay-1 { transition-delay: .15s; }
+.delay-2 { transition-delay: .3s; }
+.delay-3 { transition-delay: .45s; }
+
+/* RESPONSIVE */
+
+@media(max-width:1100px) {
+  .tt-footer-main {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  .tt-brand-area {
+    grid-column: 1/-1;
+  }
+
+  .intro-grid,
+  .experience-grid {
+    gap: 55px;
+  }
+}
+
+@media(max-width:850px) {
+  .nav-links {
+    gap: 18px;
+  }
+
+  .nav-links a {
+    font-size: 9px;
+  }
+
+  .intro-grid,
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-image {
+    margin: 20px 15px;
+  }
+
+  .history-timeline {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .history-timeline::before {
+    display: none;
+  }
+
+  .history-item::after {
+    display: none;
+  }
+
+  .philosophy-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width:700px) {
+  .nav {
+    padding: 18px 5%;
+  }
+
+  .nav-logo img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .nav-links a:not(.nav-cta) {
+    display: none;
+  }
+
+  .hero {
+    min-height: 90vh;
+    padding: 140px 7% 120px;
+    background-position: 60% center;
+  }
+
+  .hero h1 {
+    font-size: clamp(70px,17vw,110px);
+    letter-spacing: -2px;
+  }
+
+  .hero-description {
+    font-size: 12px;
+  }
+
+  .hero-bottom {
+    left: 7%;
+    right: 7%;
+    font-size: 7px;
+    bottom: 25px;
+  }
+
+  .section {
+    padding: 85px 6%;
+  }
+
+  .section-title {
+    font-size: clamp(52px,13vw,78px);
+  }
+
+  .intro-image img {
+    height: 420px;
+  }
+
+  .image-caption {
+    left: -10px;
+    bottom: 15px;
+  }
+
+  .history-heading {
+    margin-bottom: 45px;
+  }
+
+  .history-item {
+    padding: 28px 23px;
+  }
+
+  .visual-section {
+    min-height: 480px;
+    background-attachment: scroll;
+  }
+
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophy-card {
+    min-height: 270px;
+  }
+
+  .experience-image img {
+    height: 430px;
+  }
+
+  .experience-image::after {
+    right: -10px;
+  }
+
+  .quote-section {
+    padding: 85px 6%;
+  }
+
+  .final-cta {
+    padding: 95px 6%;
+  }
+
+  .tt-footer-container {
+    width: calc(100% - 40px);
+  }
+
+  .tt-footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 20px;
+    padding: 60px 0 45px;
+  }
+
+  .tt-brand-area,
+  .tt-contact-column {
+    grid-column: 1/-1;
+  }
+
+  .tt-footer-middle {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tt-social-links {
+    width: 100%;
+  }
+
+  .tt-social-links a {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tt-signature-word {
+    font-size: 19vw;
+  }
+
+  .tt-signature-top,
+  .tt-signature-bottom {
+    font-size: 6px;
+    letter-spacing: .5px;
+  }
+
+  .tt-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media(max-width:380px) {
+  .hero h1 {
+    font-size: 15vw;
+  }
+
+  .tt-brand-name strong {
+    font-size: 18px;
+  }
+
+  .tt-brand-emblem {
+    width: 65px;
+    height: 65px;
+  }
+
+  .tt-footer-column > a {
+    font-size: 10px;
+  }
+
+  .tt-bottom-links {
+    flex-wrap: wrap;
+  }
+}
+
+@media(max-width:900px) {
+  .nav {
+    min-height: 82px;
+    padding: 14px 5%;
+  }
+
+  .nav-toggle {
+    position: relative;
+    z-index: 102;
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    inset: 82px 0 0;
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    overflow-y: auto;
+    padding: 24px 7% 40px;
+    border-top: 1px solid rgba(198,161,91,.2);
+    background: rgba(8,8,8,.97);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity .25s ease, visibility .25s ease, transform .25s ease;
+  }
+
+  .nav-links.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links a:not(.nav-cta) {
+    display: block;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    font-size: 12px;
+  }
+
+  .nav-links a:not(.nav-cta)::after {
+    display: none;
+  }
+
+  .nav-links .nav-cta {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: 24px;
+  }
+
+  body.nav-menu-open {
+    overflow: hidden;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+
+  *,*::before,*::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal,.reveal-left,.reveal-right {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-content {
+    animation: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scroll-progress" aria-hidden="true"><span id="progress"></span></div>
+
+<!-- NAVBAR -->
+<nav class="nav" aria-label="Navegación principal">
+  <a href="index.html" class="nav-logo">
+    <img src="Logo.jpg" alt="Tu Templo">
+    <div>
+      <strong>TU TEMPLO</strong>
+      <small>BARBER CLUB</small>
+    </div>
+  </a>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.php">INICIO</a>
+    <a href="#historia">NUESTRA HISTORIA</a>
+    <a href="#filosofia">FILOSOFÍA</a>
+    <a href="#experiencia">EXPERIENCIA</a>
+    <a href="reservar.php" class="nav-cta">RESERVAR TURNO ↗</a>
+  </div>
+  <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="eyebrow">TU TEMPLO · BARBER CLUB</div>
+
+    <h1>
+      MÁS QUE UNA
+      <span>BARBERÍA.</span>
+      UN TEMPLO.
+    </h1>
+
+    <p class="hero-description">
+      Hay lugares a los que uno simplemente va. Y hay lugares
+      a los que uno elige volver. Tu Templo nace de esa diferencia:
+      convertir cada visita en un momento propio, donde el estilo,
+      la atención y la identidad se encuentran.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#historia" class="primary-button">
+        DESCUBRIR NUESTRA HISTORIA <span>↓</span>
+      </a>
+
+      <a href="reservar.php" class="text-button">
+        VIVÍ LA EXPERIENCIA
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <span>IDENTIDAD · ESTILO · EXPERIENCIA</span>
+    <div class="scroll-indicator">
+      <span></span>
+      DESLIZÁ PARA DESCUBRIR
+    </div>
+    <span>TT / 001</span>
+  </div>
+</header>
+
+<main>
+
+<!-- INTRODUCCIÓN -->
+<section class="section intro-section">
+  <div class="container intro-grid">
+
+    <div class="intro-copy reveal-left">
+      <div class="section-label">01 / NUESTRA ESENCIA</div>
+
+      <h2 class="section-title">
+        NO SE TRATA<br>
+        SOLAMENTE DE<br>
+        <span>UN CORTE.</span>
+      </h2>
+
+      <p>
+        En Tu Templo creemos que la barbería es mucho más que una
+        actividad. Es un espacio donde cada persona puede detener
+        el ritmo de su día, dedicarse tiempo y salir sintiéndose
+        mejor consigo misma.
+      </p>
+
+      <p>
+        Nuestra identidad se construye alrededor de una idea sencilla:
+        <strong>cada cliente merece una experiencia a la altura de
+        sus expectativas.</strong> Por eso, cada detalle importa:
+        desde el primer saludo hasta el último retoque.
+      </p>
+
+      <p>
+        No buscamos que una visita sea simplemente una cita más.
+        Queremos que sea un momento que valga la pena recordar.
+      </p>
+    </div>
+
+    <div class="intro-image reveal-right">
+      <img
+        src="Recorte1.jpg"
+        alt="Detalle de un corte degradado realizado en la barbería"
+      >
+      <div class="image-caption">EL ARTE ESTÁ EN LOS DETALLES.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section class="section history-section" id="historia">
+  <div class="container">
+
+    <div class="history-heading reveal">
+      <div class="section-label">02 / NUESTRA HISTORIA</div>
+
+      <h2 class="section-title">
+        UNA IDEA.<br>
+        UNA IDENTIDAD.<br>
+        <span>UN PROPÓSITO.</span>
+      </h2>
+
+      <p class="section-description">
+        Toda identidad tiene un origen. La nuestra nace de la pasión
+        por el oficio, el respeto por las personas y la convicción de
+        que un buen servicio se construye con dedicación.
+      </p>
+    </div>
+
+    <div class="history-timeline">
+
+      <article class="history-item reveal">
+        <div class="history-number">01</div>
+        <h3>El comienzo de una visión</h3>
+        <p>
+          Tu Templo representa una forma diferente de entender la
+          barbería. La idea no es limitarse a ofrecer cortes de cabello
+          o arreglos de barba, sino crear un espacio con personalidad,
+          donde cada persona encuentre una atención cercana y un
+          resultado pensado para su estilo.
+          <br><br>
+          Desde el principio, la visión fue construir una marca que
+          transmitiera confianza, carácter y profesionalismo.
+        </p>
+      </article>
+
+      <article class="history-item reveal delay-1">
+        <div class="history-number">02</div>
+        <h3>El valor del oficio</h3>
+        <p>
+          La barbería requiere técnica, paciencia, observación y
+          sensibilidad. Cada rostro es diferente. Cada cabello tiene
+          su comportamiento. Cada cliente llega con una expectativa.
+          <br><br>
+          Por eso entendemos que el trabajo no termina al utilizar
+          una máquina o una tijera. Comienza escuchando, interpretando
+          y comprendiendo qué busca cada persona.
+        </p>
+      </article>
+
+      <article class="history-item reveal delay-1">
+        <div class="history-number">03</div>
+        <h3>Construir una experiencia</h3>
+        <p>
+          Con el tiempo entendimos que los detalles son los que
+          transforman un servicio en una experiencia.
+          <br><br>
+          El ambiente, la comodidad, la puntualidad, la conversación,
+          la limpieza de las herramientas y la dedicación durante
+          cada procedimiento forman parte de una misma filosofía:
+          hacer que cada visita tenga sentido.
+        </p>
+      </article>
+
+      <article class="history-item reveal delay-2">
+        <div class="history-number">04</div>
+        <h3>Una identidad que evoluciona</h3>
+        <p>
+          Tu Templo es una marca en constante evolución. Creemos
+          que siempre hay algo que aprender, una técnica que
+          perfeccionar y una forma de mejorar la atención.
+          <br><br>
+          Nuestro compromiso es seguir creciendo sin perder aquello
+          que nos define: la dedicación al oficio y el respeto por
+          cada persona que confía en nosotros.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- FRASE VISUAL -->
+<section class="visual-section">
+  <div class="visual-content reveal">
+    <small>NO ES SOLO APARIENCIA</small>
+
+    <h2>
+      EL ESTILO<br>
+      <span>HABLA POR VOS.</span>
+    </h2>
+
+    <p>
+      Un buen corte no cambia quién sos. Te permite expresar
+      con mayor seguridad aquello que ya te representa.
+      En Tu Templo trabajamos para que cada detalle acompañe
+      tu personalidad.
+    </p>
+  </div>
+</section>
+
+<!-- FILOSOFÍA -->
+<section class="section philosophy-section" id="filosofia">
+  <div class="container">
+
+    <div class="philosophy-header reveal">
+      <div class="section-label">03 / NUESTRA FILOSOFÍA</div>
+
+      <h2 class="section-title">
+        LO QUE NOS<br>
+        <span>DEFINE.</span>
+      </h2>
+
+      <p class="section-description">
+        No creemos en los servicios hechos por costumbre.
+        Creemos en hacer las cosas bien, con intención,
+        criterio y respeto por quienes nos eligen.
+      </p>
+    </div>
+
+    <div class="philosophy-grid">
+
+      <article class="philosophy-card reveal">
+        <div class="philosophy-icon">01</div>
+        <h3>Precisión</h3>
+        <p>
+          Cada terminación importa. Trabajamos prestando atención
+          a los detalles, buscando resultados prolijos y acordes
+          a lo que cada cliente necesita.
+        </p>
+      </article>
+
+      <article class="philosophy-card reveal delay-1">
+        <div class="philosophy-icon">02</div>
+        <h3>Identidad</h3>
+        <p>
+          No todos buscan el mismo estilo. Escuchamos, asesoramos
+          y respetamos la personalidad de cada persona para que
+          el resultado tenga sentido.
+        </p>
+      </article>
+
+      <article class="philosophy-card reveal delay-2">
+        <div class="philosophy-icon">03</div>
+        <h3>Compromiso</h3>
+        <p>
+          La confianza se gana con acciones. Valoramos el tiempo
+          de nuestros clientes y asumimos cada servicio con
+          responsabilidad y dedicación.
+        </p>
+      </article>
+
+      <article class="philosophy-card reveal">
+        <div class="philosophy-icon">04</div>
+        <h3>Respeto</h3>
+        <p>
+          Cada persona merece sentirse cómoda y bienvenida.
+          La buena atención no es un extra: es parte fundamental
+          de nuestra manera de trabajar.
+        </p>
+      </article>
+
+      <article class="philosophy-card reveal delay-1">
+        <div class="philosophy-icon">05</div>
+        <h3>Calidad</h3>
+        <p>
+          Buscamos mejorar continuamente nuestras técnicas,
+          herramientas y procesos para ofrecer un servicio
+          que esté a la altura de las expectativas.
+        </p>
+      </article>
+
+      <article class="philosophy-card reveal delay-2">
+        <div class="philosophy-icon">06</div>
+        <h3>Experiencia</h3>
+        <p>
+          Queremos que el tiempo en Tu Templo sea un momento
+          para disfrutar, desconectarse de la rutina y dedicarte
+          atención a vos mismo.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section class="section experience-section" id="experiencia">
+  <div class="container experience-grid">
+
+    <div class="experience-image reveal-left">
+      <img
+        src="David.jpg"
+        alt="Barbero realizando un corte"
+      >
+    </div>
+
+    <div class="experience-copy reveal-right">
+      <div class="section-label">04 / LA EXPERIENCIA</div>
+
+      <h2 class="section-title">
+        TU TIEMPO.<br>
+        TU ESTILO.<br>
+        <span>TU TEMPLO.</span>
+      </h2>
+
+      <p>
+        Sabemos que el tiempo es valioso. Por eso queremos que
+        cada visita tenga una atención organizada, un ambiente
+        agradable y un servicio realizado con dedicación.
+      </p>
+
+      <p>
+        Desde el momento en que reservás tu turno, hasta que
+        finaliza el servicio, buscamos que todo tenga coherencia.
+        Nos importa que sepas qué esperar, que puedas expresar
+        tus preferencias y que te sientas escuchado.
+      </p>
+
+      <p>
+        Para nosotros, un cliente satisfecho no es solamente
+        alguien que sale con un buen corte. Es alguien que se
+        siente cómodo, valorado y con ganas de regresar.
+      </p>
+
+      <p>
+        Porque la verdadera diferencia no está únicamente
+        en lo que hacemos, sino en <strong>cómo hacemos sentir
+        a quienes nos eligen.</strong>
+      </p>
+
+      <a href="reservar.php" class="primary-button">
+        RESERVÁ TU EXPERIENCIA <span>↗</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- MANIFIESTO -->
+<section class="quote-section">
+  <div class="container reveal">
+    <div class="quote-mark">“</div>
+
+    <blockquote>
+      NO SE TRATA DE SEGUIR UN ESTILO.
+      SE TRATA DE ENCONTRAR EL TUYO
+      Y LLEVARLO CON SEGURIDAD.
+    </blockquote>
+
+    <p>EL ESPÍRITU DE TU TEMPLO BARBER CLUB</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="final-cta">
+  <div class="container reveal">
+    <div class="section-label" style="justify-content:center">
+      EL PRÓXIMO CAPÍTULO LO ESCRIBIMOS JUNTOS
+    </div>
+
+    <h2>
+      TU LUGAR.<br>
+      <span>TU MOMENTO.</span>
+    </h2>
+
+    <p>
+      Gracias por conocer nuestra historia.
+      Ahora queremos que formes parte de ella.
+      Te esperamos en Tu Templo Barber Club.
+    </p>
+
+    <a href="reservar.php" class="primary-button">
+      RESERVAR MI TURNO <span>↗</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================================================
+     TU TEMPLO / SIGNATURE BARBER CLUB FOOTER
+================================================== -->
+
+<footer class="tt-footer">
+
+    <!-- DECORATIVE TOP LINE -->
+    <div class="tt-footer-line"></div>
+
+    <div class="tt-footer-container">
+
+        <!-- TOP BRAND AREA -->
+        <div class="tt-footer-main">
+
+            <!-- BRAND -->
+            <div class="tt-brand-area">
+
+                <div class="tt-brand-lockup">
+
+                    <div class="tt-brand-emblem">
+                        <span class="tt-emblem-top">TU</span>
+                        <span class="tt-emblem-icon">✦</span>
+                        <span class="tt-emblem-bottom">TEMPLO</span>
+                    </div>
+
+                    <div class="tt-brand-name">
+                        <span>TU TEMPLO</span>
+                        <small>BUENA BARBA BARBER CLUB</small>
+                    </div>
+
+                </div>
+
+                <div class="tt-brand-description">
+                    <span class="tt-small-label">MÁS QUE UN CORTE.</span>
+
+                    <h3>
+                        EL ESTILO NO SE
+                        <span>IMPROVISA.</span>
+                    </h3>
+
+                    <p>
+                        Entrás a un espacio de culto.
+                        Salís con tu mejor versión.
+                    </p>
+                </div>
+
+                <a
+                    href="https://wa.me/595981234567?text=Hola%2C%20quiero%20reservar%20un%20turno"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="tt-footer-reserve"
+                >
+                    <span>RESERVAR MI TURNO</span>
+                    <span class="tt-reserve-arrow">↗</span>
+                </a>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="tt-footer-column">
+
+                <span class="tt-column-label">EXPLORAR</span>
+
+                <a href="index.php">Inicio</a>
+                <a href="index.php#servicios">Nuestros servicios</a>
+                <a href="#historia">Nuestra historia</a>
+                <a href="index.php#barberos">Nuestros barberos</a>
+                <a href="index.php#testimonios">Experiencias</a>
+
+            </div>
+
+
+            <!-- SERVICES -->
+            <div class="tt-footer-column">
+
+                <span class="tt-column-label">Politica De Privacidad</span>
+
+                <a href="politica_privacidad.php">Política de privacidad</a>
+                <a href="terminos_legales.php">Términos y condiciones</a>
+                
+
+            </div>
+
+
+            <!-- CONTACT -->
+            <div class="tt-footer-column tt-contact-column">
+
+                <span class="tt-column-label">VISITANOS</span>
+
+                <div class="tt-contact-item">
+                    <span class="tt-contact-icon">◷</span>
+
+                    <div>
+                        <strong>HORARIOS</strong>
+                        <p>Lunes a sábado</p>
+                        <p>10:00 — 20:00</p>
+                    </div>
+                </div>
+
+                <div class="tt-contact-item">
+                    <span class="tt-contact-icon">✆</span>
+
+                    <div>
+                        <strong>RESERVAS</strong>
+                        <a href="turno.php"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tt-contact-item">
+                    <span class="tt-contact-icon">⌖</span>
+
+                    <div>
+                        <strong>UBICACIÓN</strong>
+                        <a href="index.php#ubicacion">Cómo llegar</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SOCIAL / DIVIDER -->
+        <div class="tt-footer-middle">
+
+            <div class="tt-footer-social-title">
+                <span>FORMÁ PARTE DEL CLUB</span>
+                <p>El estilo también se comparte.</p>
+            </div>
+
+            <div class="tt-social-links">
+
+                <a href="#" target="_blank" aria-label="Instagram">
+                    IG <span>↗</span>
+                </a>
+
+                <a href="#" target="_blank" aria-label="TikTok">
+                    TK <span>↗</span>
+                </a>
+
+                <a href="#" target="_blank" aria-label="Facebook">
+                    FB <span>↗</span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- HUGE BRAND SIGNATURE -->
+        <div class="tt-footer-signature">
+
+            <div class="tt-signature-top">
+                <span>BUENA BARBA</span>
+                <span>EST. BARBER CLUB</span>
+                <span>PARAGUAY</span>
+            </div>
+
+            <div class="tt-signature-word">
+                TU<span>TEMPLO</span>
+            </div>
+
+            <div class="tt-signature-bottom">
+                <span>PRECISIÓN EN CADA DETALLE</span>
+                <span>ESTILO QUE TRASCIENDE</span>
+            </div>
+
+        </div>
+
+
+        <!-- BOTTOM BAR -->
+        <div class="tt-footer-bottom">
+
+            <div class="tt-copyright">
+                © 2026 TU TEMPLO.
+                <span> TODOS LOS DERECHOS RESERVADOS.</span>
+            </div>
+
+           
+
+            <div class="tt-developed">
+                DESIGNED WITH PRECISION
+                <span>BY NEXOWEB.PY</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+const nav = document.querySelector('.nav');
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.getElementById('navLinks');
+
+function closeMobileNav() {
+  if (!navToggle || !navLinks) return;
+  navToggle.setAttribute('aria-expanded', 'false');
+  navToggle.setAttribute('aria-label', 'Abrir menú');
+  navLinks.classList.remove('is-open');
+  document.body.classList.remove('nav-menu-open');
+}
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+    navLinks.classList.toggle('is-open', !isOpen);
+    document.body.classList.toggle('nav-menu-open', !isOpen);
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeMobileNav();
+  });
+}
+
+let scrollTicking = false;
+function updateNavigation() {
+  const scrollTop = window.scrollY;
+  nav.classList.toggle('is-scrolled', scrollTop > 24);
+
+  const sections = document.querySelectorAll('main section[id]');
+  let activeSection = '';
+  sections.forEach(section => {
+    if (section.getBoundingClientRect().top <= 150) {
+      activeSection = section.id;
+    }
+  });
+
+  navLinks.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.classList.toggle('is-active', link.getAttribute('href') === `#${activeSection}`);
+  });
+
+  scrollTicking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) {
+    window.requestAnimationFrame(updateNavigation);
+    scrollTicking = true;
+  }
+}, { passive: true });
+
+updateNavigation();
+
+// BARRA DE PROGRESO
+const progress = document.getElementById('progress');
+
+function updateProgress() {
+  const scrollTop = window.scrollY;
+  const height = document.documentElement.scrollHeight - window.innerHeight;
+  const percentage = height > 0 ? scrollTop / height : 0;
+  progress.style.transform = `scaleX(${percentage})`;
+}
+
+window.addEventListener('scroll', updateProgress, {passive:true});
+updateProgress();
+
+// ANIMACIONES AL HACER SCROLL
+const revealElements = document.querySelectorAll(
+  '.reveal, .reveal-left, .reveal-right'
+);
+
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -35px 0px'
+  });
+
+  revealElements.forEach(element => observer.observe(element));
+} else {
+  revealElements.forEach(element => element.classList.add('visible'));
+}
+</script>
+
+</body>
+</html>
